@@ -1,9 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin'); 
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+  mode: 'development',
   // 1
   // Use the src/index.js file as entry point to bundle it.
   // If the src/index.js file imports other JS files,
@@ -29,4 +29,30 @@ module.exports = {
       template: path.resolve(__dirname, './src/index.html'),
     })
   ],
+  // 5 
+  // Integrate Babel in the build process
+  // Define which files to use the loader
+  module: {
+    // configuration regarding modules
+    rules: [
+      {
+        test: /\.(js)$/,
+        exclude: /node_modules/, // files to exclude
+        use: ['babel-loader']
+      },
+      // CSS and SASS
+      {
+        test: /\.(scss|css)$/,  // load files that end with scss and css
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
+      },
+    ]
+  },
+  resolve: {
+    // options for resolving module requests
+    extensions: ['*', '.js']  // files to load
+  }
 };
