@@ -22,11 +22,20 @@
 </div>
 
 <body>
-  <h1>
-    <%= htmlWebpackPlugin.options.title %>
-  </h1>
+  <h1>Book Shop</h1>
 
-  <h2>Hier API Sachen</h2>
+  <div class="form-item">
+    <input id="booksInput">
+  </div>
+  <div class="button-container">
+    <button class="button" id="booksButton">Get Books!</button>
+  </div>
+
+  <br>
+  <table id="table" class="table">
+    <thead id="thead"></thead>
+    <tbody id="tbody"></tbody>
+  </table>
 </body>
 
 </html>

@@ -3,12 +3,18 @@ $color-text-main: #f2f2f2;
 $color-text-dark: black;
 $color-body: #1F2933;
 $color-hover: #FFC107;
+$color-white: white;
+$color-button: #CBD2D9;
 
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: $color-body;
   color: $color-text-main;
+}
+
+h1 {
+  text-align: center;
 }
 
 .navBar {
@@ -47,9 +53,65 @@ body {
   padding: 5rem;
 }
 
-form {
-  background-color: $color-nav;
-  max-width: 25rem;
+.form-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem 1rem 2rem;
+}
+
+.form-item input {
+  background-color: $color-white;
+  border: 1px solid $color-text-dark;
+  border-radius: 3px;
+  padding: 7px;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+input:hover {
+  border: 1px solid $color-hover;
+}
+
+.table {
+  box-shadow: 0 0 10px $color-text-dark;
+  border-collapse: collapse;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.table thead th {
+  background: $color-nav;
+  color: $color-text-main;
+}
+
+.table td,
+.table th {
+  padding: 10px 20px;
+}
+
+.table tbody tr:nth-of-type(even) {
+  background: $color-nav;
+}
+
+.button-container {
+  text-align: center;
+}
+
+.button {
+  background-color: $color-button;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 1rem;
+}
+
+.button:hover {
+  background-color: $color-hover;
+  border: 1px solid $color-hover;
 }
 
 @media screen and (max-width: 600px) {
