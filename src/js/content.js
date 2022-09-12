@@ -44,17 +44,3 @@ async function getBooks() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.addEventListener('click', removeElement);
-
-  function removeElement(e) {
-    let elem = e.target;
-    let main = document.querySelector("main");
-    if (main != elem) {
-      let parent = elem.parentNode;
-      parent.removeChild(elem);
-      return false;
-    }
-  }
-});
-
