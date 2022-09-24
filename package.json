@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/ZieglD/web-einzel-ziegler#readme",
   "dependencies": {
-    "axios": "^0.27.2",
     "css-loader": "^6.7.1",
     "node-sass": "^7.0.3",
     "sass": "^1.54.9",
