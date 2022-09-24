@@ -1,6 +1,8 @@
 const booksButton = document.getElementById("booksButton");
 const tableHead = document.getElementById("thead");
 const tableBody = document.getElementById("tbody");
+const tableHeadFavorites = document.getElementById("theadFavorites");
+const tableBodyFavorites = document.getElementById("tbodyFavorites");
 
 if (booksButton) {
   booksButton.addEventListener("click", getBooks);
@@ -25,8 +27,11 @@ async function getBooks() {
   rowHeader.appendChild(thPages);
   tableHead.appendChild(rowHeader);
 
+  let rowIdCounter = 0;
+
   for (const doc of docs) {
     const rowElement = document.createElement("tr");
+    rowElement.id = ++rowIdCounter;
 
     const title = document.createElement("td");
     title.textContent = doc.title;
@@ -43,4 +48,35 @@ async function getBooks() {
     tableBody.appendChild(rowElement);
   }
 }
+
+function addToFavorites() {
+  tableBodyFavorites.innerHTML = "";
+  tableHeadFavorites.innerHTML = "";
+
+  const tableHeader = document.createElement("tr");
+  const thFavorites = document.createElement("th");
+  thFavorites.textContent = "Favorites";
+  thFavorites.colSpan = 3;
+  const rowHeader = document.createElement("tr");
+  const thTitle = document.createElement("th");
+  thTitle.textContent = "Title";
+  const thAuthor = document.createElement("th");
+  thAuthor.textContent = "Author";
+  const thPages = document.createElement("th");
+  thPages.textContent = "Pages";
+
+  tableHeader.appendChild(thFavorites);
+  tableHeadFavorites.appendChild(tableHeader);
+  tableHeadFavorites.appendChild(rowHeader);
+  rowHeader.appendChild(thTitle);
+  rowHeader.appendChild(thAuthor);
+  rowHeader.appendChild(thPages);
+
+  tableBody.addEventListener('click', function (e) {
+    let tr = e.target.closest('tr');
+    tableBodyFavorites.appendChild(tr);
+  })
+}
+
+addToFavorites();
 
