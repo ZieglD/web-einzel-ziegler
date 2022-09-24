@@ -1,4 +1,4 @@
-# web-einzel-ziegler
+# Einzelprojekt Ziegler - Bücher
 
 Auf der Homepage gibt es ein Form. Die Validierung wird dabei über die verfügbaren Optionen, die HTML bietet, gemacht. Für die Validierung der Telefonnummer wird der Input mit einer Regular Expression verglichen. Je nachdem, ob der Input zur Regular Expression passt, kommt beim Submitten ein Alert mit der zugehörigen Meldung.
 
