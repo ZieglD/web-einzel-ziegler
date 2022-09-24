@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<div class="navBar" id="topNavBar">
+<div class="nav-bar" id="topNavBar">
   <a href="index.html">Home</a>
   <a href="content.html" class="active">Content</a>
   <a href="about.html">About</a>
@@ -24,25 +24,26 @@
 
 <body>
   <h1>Track your favorite Books</h1>
-  <div class="container-content">
+  <div class="container-books">
     <div class="form-item">
-      <input id="booksInput" placeholder="Search books by author or by book title">
+      <input id="booksInput" placeholder="Search for books or authors!">
     </div>
     <div class="button-container">
       <button class="button" id="booksButton">Get Books!</button>
     </div>
-    <br>
-    <table id="tableFavorites" class="table">
-      <thead id="theadFavorites"></thead>
-      <tbody id="tbodyFavorites"></tbody>
-    </table>
-    <br>
+    <div class="container-table">
+      <table id="tableFavorites" class="table">
+        <thead id="theadFavorites"></thead>
+        <tbody id="tbodyFavorites"></tbody>
+      </table>
+    </div>
     <h2 id="h2InfoText"></h2>
-    <br>
-    <table id="tableSearch" class="table">
-      <thead id="theadSearch"></thead>
-      <tbody id="tbodySearch"></tbody>
-    </table>
+    <div class="container-table">
+      <table id="tableSearch" class="table">
+        <thead id="theadSearch"></thead>
+        <tbody id="tbodySearch"></tbody>
+      </table>
+    </div>
   </div>
 </body>
 

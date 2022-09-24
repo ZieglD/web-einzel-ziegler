@@ -7,6 +7,15 @@ const tableBodySearch = document.getElementById("tbodySearch");
 
 if (booksButton) {
   booksButton.addEventListener("click", getBooks);
+  tableBodySearch.addEventListener('click', function (e) {
+    createFavoritesTable();
+    let selectedRow = e.target.closest('tr');
+    tableBodyFavorites.appendChild(selectedRow);
+  })
+  tableBodyFavorites.addEventListener('click', function (e) {
+    let selectedRow = e.target.closest('tr');
+    tableBodySearch.appendChild(selectedRow);
+  })
 }
 
 async function getBooks() {
@@ -27,15 +36,15 @@ async function getBooks() {
   const thParametersSearch = document.createElement("tr");
 
   const thBookTitleSearch = document.createElement("th");
-  thBookTitleSearch.className = "tableTitle";
+  thBookTitleSearch.className = "table-title";
   thBookTitleSearch.textContent = "Title";
 
   const thAuthorSearch = document.createElement("th");
-  thAuthorSearch.className = "tableAuthor";
+  thAuthorSearch.className = "table-author";
   thAuthorSearch.textContent = "Author";
 
   const thPagesSearch = document.createElement("th");
-  thPagesSearch.className = "tablePages";
+  thPagesSearch.className = "table-pages";
   thPagesSearch.textContent = "Pages";
 
   thHeadlineSearch.appendChild(tdHeadlineSearch);
@@ -45,20 +54,19 @@ async function getBooks() {
   thParametersSearch.appendChild(thAuthorSearch);
   thParametersSearch.appendChild(thPagesSearch);
 
-
   for (const doc of docs) {
     const rowTableSearch = document.createElement("tr");
 
     const tdBookTitleSearch = document.createElement("td");
-    tdBookTitleSearch.className = "tableTitle";
+    tdBookTitleSearch.className = "table-title";
     tdBookTitleSearch.textContent = doc.title;
 
     const tdAuthorSearch = document.createElement("td");
-    tdAuthorSearch.className = "tableAuthor";
+    tdAuthorSearch.className = "table-author";
     tdAuthorSearch.textContent = doc.author_name;
 
     const tdPagesSearch = document.createElement("td");
-    tdPagesSearch.className = "tablePages";
+    tdPagesSearch.className = "table-pages";
     tdPagesSearch.textContent = doc.number_of_pages_median;
 
     rowTableSearch.appendChild(tdBookTitleSearch);
@@ -86,15 +94,15 @@ let createFavoritesTable = (function () {
       const thParametersFavorites = document.createElement("tr");
 
       const tdBookTitleFavorites = document.createElement("th");
-      tdBookTitleFavorites.className = "tableTitle";
+      tdBookTitleFavorites.className = "table-title";
       tdBookTitleFavorites.textContent = "Title";
 
       const tdAuthorFavorites = document.createElement("th");
-      tdAuthorFavorites.className = "tableAuthor";
+      tdAuthorFavorites.className = "table-author";
       tdAuthorFavorites.textContent = "Author";
 
       const tdPagesFavorites = document.createElement("th");
-      tdPagesFavorites.className = "tablePages";
+      tdPagesFavorites.className = "table-pages";
       tdPagesFavorites.textContent = "Pages";
 
       thHeadlineFavorites.appendChild(tdHeadlineFavorites);
@@ -107,14 +115,5 @@ let createFavoritesTable = (function () {
   };
 })();
 
-tableBodySearch.addEventListener('click', function (e) {
-  createFavoritesTable();
-  let selectedRow = e.target.closest('tr');
-  tableBodyFavorites.appendChild(selectedRow);
-})
 
-tableBodyFavorites.addEventListener('click', function (e) {
-  let selectedRow = e.target.closest('tr');
-  tableBodySearch.appendChild(selectedRow);
-})
 

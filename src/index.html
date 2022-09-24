@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<div class="navBar" id="topNavBar">
+<div class="nav-bar" id="topNavBar">
   <a href="index.html" class="active">Home</a>
   <a href="content.html">Content</a>
   <a href="about.html">About</a>
@@ -23,14 +23,16 @@
 </div>
 
 <body>
-  <div class="container">
+  <h1>This is a Login Form</h1>
+  <h2>The phone number input has a special validation, so make sure to use the correct format!</h2>
+  <div class="container-form">
     <form action="" method="get" id="form">
       <div class="form-item">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" placeholder="eg. Max Mustermann" required>
       </div>
       <div class="form-item">
-        <label for="phoneNumber">Number</label>
+        <label for="phoneNumber">Phone Number</label>
         <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="eg. 0664-1234567" required>
       </div>
       <div class="form-item">
@@ -46,7 +48,6 @@
       </div>
     </form>
   </div>
-
 </body>
 
 </html>

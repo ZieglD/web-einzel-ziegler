@@ -35,7 +35,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'content.html',
-      title: "Project - Content",
+      title: "Project - Books",
       template: path.resolve(__dirname, './src/content.html'),
     })
   ],
