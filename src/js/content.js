@@ -1,8 +1,9 @@
 const booksButton = document.getElementById("booksButton");
-const tableHead = document.getElementById("thead");
-const tableBody = document.getElementById("tbody");
 const tableHeadFavorites = document.getElementById("theadFavorites");
 const tableBodyFavorites = document.getElementById("tbodyFavorites");
+const h2InfoText = document.getElementById("h2InfoText");
+const tableHeadSearch = document.getElementById("theadSearch");
+const tableBodySearch = document.getElementById("tbodySearch");
 
 if (booksButton) {
   booksButton.addEventListener("click", getBooks);
@@ -12,71 +13,108 @@ async function getBooks() {
   const response = await fetch("http://openlibrary.org/search.json?q=" + document.getElementById("booksInput").value);
   const { docs } = await response.json();
 
-  tableBody.innerHTML = "";
-  tableHead.innerHTML = "";
-  const rowHeader = document.createElement("tr");
-  const thTitle = document.createElement("th");
-  thTitle.textContent = "Title";
-  const thAuthor = document.createElement("th");
-  thAuthor.textContent = "Author";
-  const thPages = document.createElement("th");
-  thPages.textContent = "Pages";
+  h2InfoText.textContent = "Add books to your Favorites List by clicking on a Row below!";
 
-  rowHeader.appendChild(thTitle);
-  rowHeader.appendChild(thAuthor);
-  rowHeader.appendChild(thPages);
-  tableHead.appendChild(rowHeader);
+  tableBodySearch.innerHTML = "";
+  tableHeadSearch.innerHTML = "";
 
-  let rowIdCounter = 0;
+  const thHeadlineSearch = document.createElement("tr");
+
+  const tdHeadlineSearch = document.createElement("th");
+  tdHeadlineSearch.textContent = "Available Books";
+  tdHeadlineSearch.colSpan = 3;
+
+  const thParametersSearch = document.createElement("tr");
+
+  const thBookTitleSearch = document.createElement("th");
+  thBookTitleSearch.className = "tableTitle";
+  thBookTitleSearch.textContent = "Title";
+
+  const thAuthorSearch = document.createElement("th");
+  thAuthorSearch.className = "tableAuthor";
+  thAuthorSearch.textContent = "Author";
+
+  const thPagesSearch = document.createElement("th");
+  thPagesSearch.className = "tablePages";
+  thPagesSearch.textContent = "Pages";
+
+  thHeadlineSearch.appendChild(tdHeadlineSearch);
+  tableHeadSearch.appendChild(thHeadlineSearch);
+  tableHeadSearch.appendChild(thParametersSearch);
+  thParametersSearch.appendChild(thBookTitleSearch);
+  thParametersSearch.appendChild(thAuthorSearch);
+  thParametersSearch.appendChild(thPagesSearch);
+
 
   for (const doc of docs) {
-    const rowElement = document.createElement("tr");
-    rowElement.id = ++rowIdCounter;
+    const rowTableSearch = document.createElement("tr");
 
-    const title = document.createElement("td");
-    title.textContent = doc.title;
+    const tdBookTitleSearch = document.createElement("td");
+    tdBookTitleSearch.className = "tableTitle";
+    tdBookTitleSearch.textContent = doc.title;
 
-    const author = document.createElement("td");
-    author.textContent = doc.author_name;
+    const tdAuthorSearch = document.createElement("td");
+    tdAuthorSearch.className = "tableAuthor";
+    tdAuthorSearch.textContent = doc.author_name;
 
-    const pages = document.createElement("td");
-    pages.textContent = doc.number_of_pages_median;
+    const tdPagesSearch = document.createElement("td");
+    tdPagesSearch.className = "tablePages";
+    tdPagesSearch.textContent = doc.number_of_pages_median;
 
-    rowElement.appendChild(title);
-    rowElement.appendChild(author);
-    rowElement.appendChild(pages);
-    tableBody.appendChild(rowElement);
+    rowTableSearch.appendChild(tdBookTitleSearch);
+    rowTableSearch.appendChild(tdAuthorSearch);
+    rowTableSearch.appendChild(tdPagesSearch);
+    tableBodySearch.appendChild(rowTableSearch);
   }
 }
 
-function addToFavorites() {
-  tableBodyFavorites.innerHTML = "";
-  tableHeadFavorites.innerHTML = "";
+let createFavoritesTable = (function () {
+  let executed = false;
+  return function () {
+    if (!executed) {
+      executed = true;
 
-  const tableHeader = document.createElement("tr");
-  const thFavorites = document.createElement("th");
-  thFavorites.textContent = "Favorites";
-  thFavorites.colSpan = 3;
-  const rowHeader = document.createElement("tr");
-  const thTitle = document.createElement("th");
-  thTitle.textContent = "Title";
-  const thAuthor = document.createElement("th");
-  thAuthor.textContent = "Author";
-  const thPages = document.createElement("th");
-  thPages.textContent = "Pages";
+      tableBodyFavorites.innerHTML = "";
+      tableHeadFavorites.innerHTML = "";
 
-  tableHeader.appendChild(thFavorites);
-  tableHeadFavorites.appendChild(tableHeader);
-  tableHeadFavorites.appendChild(rowHeader);
-  rowHeader.appendChild(thTitle);
-  rowHeader.appendChild(thAuthor);
-  rowHeader.appendChild(thPages);
+      const thHeadlineFavorites = document.createElement("tr");
 
-  tableBody.addEventListener('click', function (e) {
-    let tr = e.target.closest('tr');
-    tableBodyFavorites.appendChild(tr);
-  })
-}
+      const tdHeadlineFavorites = document.createElement("th");
+      tdHeadlineFavorites.textContent = "Favorites";
+      tdHeadlineFavorites.colSpan = 3;
 
-addToFavorites();
+      const thParametersFavorites = document.createElement("tr");
+
+      const tdBookTitleFavorites = document.createElement("th");
+      tdBookTitleFavorites.className = "tableTitle";
+      tdBookTitleFavorites.textContent = "Title";
+
+      const tdAuthorFavorites = document.createElement("th");
+      tdAuthorFavorites.className = "tableAuthor";
+      tdAuthorFavorites.textContent = "Author";
+
+      const tdPagesFavorites = document.createElement("th");
+      tdPagesFavorites.className = "tablePages";
+      tdPagesFavorites.textContent = "Pages";
+
+      thHeadlineFavorites.appendChild(tdHeadlineFavorites);
+      tableHeadFavorites.appendChild(thHeadlineFavorites);
+      tableHeadFavorites.appendChild(thParametersFavorites);
+      thParametersFavorites.appendChild(tdBookTitleFavorites);
+      thParametersFavorites.appendChild(tdAuthorFavorites);
+      thParametersFavorites.appendChild(tdPagesFavorites);
+    }
+  };
+})();
+
+tableBodySearch.addEventListener('click', function (e) {
+  createFavoritesTable();
+  let selectedRow = e.target.closest('tr');
+  tableBodyFavorites.appendChild(selectedRow);
+})
+
+tableBodyFavorites.addEventListener('click', function (e) {
+  let selectedRow = e.target.closest('tr');
+  tableBodySearch.appendChild(selectedRow);
+})
 

@@ -13,7 +13,7 @@ body {
   color: $color-text-main;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
 }
 
@@ -72,6 +72,13 @@ input:hover {
   border: 1px solid $color-hover;
 }
 
+.container-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5rem 0 5rem;
+}
+
 .table {
   box-shadow: 0 0 10px $color-text-dark;
   border-collapse: collapse;
@@ -93,6 +100,19 @@ input:hover {
   background: $color-nav;
 }
 
+.table tbody tr:nth-of-type(even):hover, tr:hover {
+  background: $color-hover;
+  color: $color-text-dark;
+}
+
+.tableTitle, .tableAuthor {
+  width: 45%;
+}
+
+.tablePages {
+  width: 10%;
+}
+
 .button-container {
   text-align: center;
 }
@@ -111,7 +131,6 @@ input:hover {
 
 .button:hover {
   background-color: $color-hover;
-  border: 1px solid $color-hover;
 }
 
 @media screen and (max-width: 600px) {

@@ -23,26 +23,27 @@
 </div>
 
 <body>
-  <h1>Book Shop</h1>
-
-  <div class="form-item">
-    <input id="booksInput">
+  <h1>Track your favorite Books</h1>
+  <div class="container-content">
+    <div class="form-item">
+      <input id="booksInput" placeholder="Search books by author or by book title">
+    </div>
+    <div class="button-container">
+      <button class="button" id="booksButton">Get Books!</button>
+    </div>
+    <br>
+    <table id="tableFavorites" class="table">
+      <thead id="theadFavorites"></thead>
+      <tbody id="tbodyFavorites"></tbody>
+    </table>
+    <br>
+    <h2 id="h2InfoText"></h2>
+    <br>
+    <table id="tableSearch" class="table">
+      <thead id="theadSearch"></thead>
+      <tbody id="tbodySearch"></tbody>
+    </table>
   </div>
-  <div class="button-container">
-    <button class="button" id="booksButton">Get Books!</button>
-  </div>
-
-  <br>
-
-  <table id="tableFavorites" class="table">
-    <thead id="theadFavorites"></thead>
-    <tbody id="tbodyFavorites"></tbody>
-  </table>
-
-  <table id="table" class="table">
-    <thead id="thead"></thead>
-    <tbody id="tbody"></tbody>
-  </table>
 </body>
 
 </html>
